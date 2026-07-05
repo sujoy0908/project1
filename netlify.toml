@@ -2,6 +2,9 @@
   base = "frontend"
   publish = "dist"
   command = "npm run build"
+  
+  [build.environment]
+    VITE_API_URL = "https://project1-wzzn.onrender.com"
 
 [[redirects]]
   from = "/*"
