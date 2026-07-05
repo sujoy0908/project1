@@ -1,20 +1,9 @@
 import { useState, useEffect } from 'react';
 import RiskAssessmentForm from './components/RiskAssessmentForm';
-import PortfolioOverview from './components/PortfolioOverview';
-import FeatureImportance from './components/FeatureImportance';
-import ModelMetrics from './components/ModelMetrics';
 import { healthCheck } from './services/api';
-
-const NAV_ITEMS = [
-  { id: 'risk-assessment', label: 'Risk Assessment', icon: '📋' },
-  { id: 'portfolio', label: 'Portfolio', icon: '📊' },
-  { id: 'feature-importance', label: 'Features', icon: '📈' },
-  { id: 'model-performance', label: 'Performance', icon: '⚡' },
-];
 
 export default function App() {
   const [apiStatus, setApiStatus] = useState('checking');
-  const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
     const checkApi = async () => {
@@ -27,11 +16,6 @@ export default function App() {
     };
     checkApi();
   }, []);
-
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setActiveSection(id);
-  };
 
   return (
     <div className="min-h-screen text-white relative">
@@ -64,24 +48,6 @@ export default function App() {
               </div>
             </div>
 
-            {/* Nav links */}
-            <nav className="hidden md:flex items-center gap-2">
-              {NAV_ITEMS.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300
-                    ${activeSection === item.id
-                      ? 'bg-cyan-500/20 text-cyan-300 shadow-[0_0_10px_rgba(6,182,212,0.2)]'
-                      : 'text-slate-300 hover:text-white hover:bg-white/5'
-                    }`}
-                >
-                  <span className="mr-2">{item.icon}</span>
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-
             {/* API Status */}
             <div className="flex items-center gap-2">
               <div className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wide shadow-lg ${
@@ -106,9 +72,9 @@ export default function App() {
       {/* ═══════════════════════════════════════════ */}
       {/*  MAIN CONTENT                               */}
       {/* ═══════════════════════════════════════════ */}
-      <main className="relative z-10 w-full max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-16 py-12 space-y-24 animate-fade-in">
+      <main className="relative z-10 w-full max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-16 py-12 animate-fade-in">
         {apiStatus === 'disconnected' && (
-          <div className="glass-panel border-red-500/30 rounded-2xl p-6 flex items-start gap-4">
+          <div className="glass-panel border-red-500/30 rounded-2xl p-6 flex items-start gap-4 mb-8">
             <span className="text-3xl animate-bounce">⚠️</span>
             <div>
               <p className="text-red-400 font-heading font-semibold text-xl">Backend API is unreachable</p>
@@ -119,21 +85,22 @@ export default function App() {
           </div>
         )}
 
-        <RiskAssessmentForm />
-        <PortfolioOverview />
-        <FeatureImportance />
-        <ModelMetrics />
+        <div className="mb-8">
+          <h2 className="text-2xl sm:text-3xl font-heading font-bold text-white tracking-tight flex items-center gap-3">
+            <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </span>
+            New Risk Assessment
+          </h2>
+          <p className="text-sm sm:text-base text-slate-400 mt-2 ml-14">
+            Enter applicant details to predict credit risk
+          </p>
+        </div>
 
-        {/* Footer */}
-        <footer className="border-t border-white/10 pt-10 pb-6 text-center">
-          <div className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full mb-6 opacity-50" />
-          <p className="text-xs text-slate-500 font-medium">
-            CreditGuard — Credit Risk Prediction Dashboard
-          </p>
-          <p className="text-[11px] text-slate-600 mt-2">
-            Built with FastAPI, scikit-learn, React &amp; Recharts
-          </p>
-        </footer>
+        <RiskAssessmentForm />
       </main>
     </div>
   );
