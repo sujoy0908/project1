@@ -34,49 +34,49 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+    <div className="min-h-screen text-white relative">
       {/* ── Background decoration ── */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-teal-500/5 blur-3xl" />
-        <div className="absolute top-1/3 -left-20 w-72 h-72 rounded-full bg-indigo-500/5 blur-3xl" />
-        <div className="absolute bottom-20 right-1/4 w-80 h-80 rounded-full bg-violet-500/5 blur-3xl" />
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-cyan-600/10 blur-[100px] animate-pulse-glow" />
+        <div className="absolute top-1/3 -left-20 w-[500px] h-[500px] rounded-full bg-fuchsia-600/10 blur-[120px]" />
+        <div className="absolute bottom-20 right-1/4 w-80 h-80 rounded-full bg-blue-600/10 blur-[100px]" />
       </div>
 
       {/* ═══════════════════════════════════════════ */}
       {/*  HEADER / NAVIGATION                       */}
       {/* ═══════════════════════════════════════════ */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-slate-900/70 border-b border-slate-800/50">
+      <header className="sticky top-0 z-50 glass-panel border-b-0 border-b-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-teal-500/25">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.5)]">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5}
                     d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
               <div>
-                <h1 className="text-lg font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent leading-tight">
+                <h1 className="text-xl font-heading font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent leading-tight tracking-tight">
                   CreditGuard
                 </h1>
-                <p className="text-[10px] text-slate-500 -mt-0.5 tracking-wider uppercase">Risk Analytics</p>
+                <p className="text-[10px] text-cyan-400 -mt-0.5 tracking-widest uppercase font-semibold">Risk Analytics</p>
               </div>
             </div>
 
             {/* Nav links */}
-            <nav className="hidden md:flex items-center gap-1">
+            <nav className="hidden md:flex items-center gap-2">
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3.5 py-2 rounded-lg text-xs font-medium transition-all duration-200
+                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300
                     ${activeSection === item.id
-                      ? 'bg-teal-500/15 text-teal-400'
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                      ? 'bg-cyan-500/20 text-cyan-300 shadow-[0_0_10px_rgba(6,182,212,0.2)]'
+                      : 'text-slate-300 hover:text-white hover:bg-white/5'
                     }`}
                 >
-                  <span className="mr-1.5">{item.icon}</span>
+                  <span className="mr-2">{item.icon}</span>
                   {item.label}
                 </button>
               ))}
@@ -84,19 +84,19 @@ export default function App() {
 
             {/* API Status */}
             <div className="flex items-center gap-2">
-              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold ${
+              <div className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wide shadow-lg ${
                 apiStatus === 'connected'
-                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shadow-emerald-500/10'
                   : apiStatus === 'checking'
-                  ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                  : 'bg-red-500/10 text-red-400 border border-red-500/20'
+                  ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
+                  : 'bg-red-500/10 text-red-400 border border-red-500/30 shadow-red-500/10'
               }`}>
-                <span className={`w-1.5 h-1.5 rounded-full ${
-                  apiStatus === 'connected' ? 'bg-emerald-400 animate-pulse' :
-                  apiStatus === 'checking' ? 'bg-amber-400 animate-pulse' : 'bg-red-400'
+                <span className={`w-2 h-2 rounded-full ${
+                  apiStatus === 'connected' ? 'bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]' :
+                  apiStatus === 'checking' ? 'bg-amber-400 animate-pulse' : 'bg-red-400 shadow-[0_0_8px_#f87171]'
                 }`} />
-                {apiStatus === 'connected' ? 'API Connected' :
-                 apiStatus === 'checking' ? 'Connecting...' : 'API Offline'}
+                {apiStatus === 'connected' ? 'API CONNECTED' :
+                 apiStatus === 'checking' ? 'CONNECTING...' : 'API OFFLINE'}
               </div>
             </div>
           </div>
@@ -106,13 +106,13 @@ export default function App() {
       {/* ═══════════════════════════════════════════ */}
       {/*  MAIN CONTENT                               */}
       {/* ═══════════════════════════════════════════ */}
-      <main className="relative max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-14">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 space-y-16 animate-fade-in">
         {apiStatus === 'disconnected' && (
-          <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-5 flex items-start gap-3">
-            <span className="text-xl">⚠️</span>
+          <div className="glass-panel border-red-500/30 rounded-2xl p-5 flex items-start gap-4">
+            <span className="text-2xl animate-bounce">⚠️</span>
             <div>
-              <p className="text-amber-300 font-semibold text-sm">Backend API is unreachable</p>
-              <p className="text-amber-400/70 text-xs mt-1">
+              <p className="text-red-400 font-heading font-semibold text-lg">Backend API is unreachable</p>
+              <p className="text-red-400/70 text-sm mt-1">
                 The backend API could not be reached. Ensure your server is running and configured correctly.
               </p>
             </div>
@@ -125,12 +125,13 @@ export default function App() {
         <ModelMetrics />
 
         {/* Footer */}
-        <footer className="border-t border-slate-800/50 pt-8 pb-4 text-center">
-          <p className="text-xs text-slate-600">
-            CreditGuard — Credit Risk Prediction Dashboard · Built with FastAPI, scikit-learn, React &amp; Recharts
+        <footer className="border-t border-white/10 pt-10 pb-6 text-center">
+          <div className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full mb-6 opacity-50" />
+          <p className="text-xs text-slate-500 font-medium">
+            CreditGuard — Credit Risk Prediction Dashboard
           </p>
-          <p className="text-[10px] text-slate-700 mt-1">
-            Portfolio project demonstrating ML deployment + full-stack engineering for financial risk analytics
+          <p className="text-[11px] text-slate-600 mt-2">
+            Built with FastAPI, scikit-learn, React &amp; Recharts
           </p>
         </footer>
       </main>

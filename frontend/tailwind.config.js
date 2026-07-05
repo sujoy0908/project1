@@ -8,9 +8,10 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['Outfit', 'sans-serif'],
       },
       colors: {
-        // Custom banking palette
+        // Custom banking palette (kept for backward compatibility, but we rely heavily on cyan/fuchsia gradients now)
         navy: {
           50: '#eef3ff',
           100: '#dfe8ff',
@@ -26,8 +27,9 @@ export default {
         },
       },
       animation: {
-        'fade-in': 'fade-in 0.4s ease-out',
+        'fade-in': 'fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'slide-up': 'slide-up 0.5s ease-out',
+        'pulse-glow': 'pulse-glow 2s infinite',
       },
       keyframes: {
         'fade-in': {
@@ -38,6 +40,11 @@ export default {
           from: { opacity: '0', transform: 'translateY(24px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
+        'pulse-glow': {
+          '0%': { boxShadow: '0 0 0 0 rgba(6, 182, 212, 0.4)' },
+          '70%': { boxShadow: '0 0 0 10px rgba(6, 182, 212, 0)' },
+          '100%': { boxShadow: '0 0 0 0 rgba(6, 182, 212, 0)' },
+        }
       },
     },
   },

@@ -102,21 +102,23 @@ function MetricCard({ label, primary, baseline, icon }) {
   const better = diff >= 0;
 
   return (
-    <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-4 shadow-lg
-      transition-transform duration-200 hover:scale-[1.02]">
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-sm">{icon}</span>
-        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-          better ? 'bg-emerald-500/15 text-emerald-400' : 'bg-red-500/15 text-red-400'
-        }`}>
-          {better ? '+' : ''}{(diff * 100).toFixed(1)}%
-        </span>
-      </div>
-      <p className="text-2xl font-black text-white">{(primary * 100).toFixed(1)}%</p>
-      <p className="text-xs text-slate-400 mt-1">{label}</p>
-      <div className="mt-2 flex items-center gap-1.5">
-        <span className="text-[10px] text-slate-500">Baseline:</span>
-        <span className="text-[10px] text-slate-400 font-medium">{(baseline * 100).toFixed(1)}%</span>
+    <div className="glass-panel rounded-2xl p-5 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group relative overflow-hidden">
+      <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-xl">{icon}</span>
+          <span className={`text-[11px] font-black tracking-wide px-2.5 py-1 rounded-full shadow-sm ${
+            better ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'
+          }`}>
+            {better ? '+' : ''}{(diff * 100).toFixed(1)}%
+          </span>
+        </div>
+        <p className="text-3xl font-black text-white tracking-tight">{(primary * 100).toFixed(1)}%</p>
+        <p className="text-xs text-slate-400 font-semibold mt-1.5 uppercase tracking-wider">{label}</p>
+        <div className="mt-3 flex items-center justify-between bg-black/20 px-3 py-1.5 rounded-lg border border-white/5">
+          <span className="text-[10px] text-slate-500 font-medium">BASELINE</span>
+          <span className="text-[11px] text-slate-300 font-bold">{(baseline * 100).toFixed(1)}%</span>
+        </div>
       </div>
     </div>
   );

@@ -146,32 +146,28 @@ export default function RiskAssessmentForm() {
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* ── Form (left panel) ── */}
-        <form onSubmit={handleSubmit} className="lg:col-span-3 bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 shadow-xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit} className="lg:col-span-3 glass-panel rounded-2xl p-6 sm:p-8 animate-fade-in relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {Object.entries(FORM_FIELDS).map(([key, field]) => (
-              <div key={key} className="space-y-1.5">
-                <label htmlFor={key} className="block text-sm font-medium text-slate-300">
+              <div key={key} className="space-y-2">
+                <label htmlFor={key} className="block text-[13px] font-semibold text-slate-300 tracking-wide">
                   {field.label}
                 </label>
                 {field.type === 'select' ? (
                   <select
                     id={key} name={key} value={formData[key]} onChange={handleChange}
                     required={!['saving_accounts', 'checking_account'].includes(key)}
-                    className="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-600/50 rounded-xl text-white
-                      focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all duration-200
-                      hover:border-slate-500"
+                    className="w-full px-4 py-3 glass-input rounded-xl text-sm"
                   >
                     {field.options.map((opt) => (
-                      <option key={opt.value} value={opt.value}>{opt.label}</option>
+                      <option key={opt.value} value={opt.value} className="bg-slate-900 text-slate-200">{opt.label}</option>
                     ))}
                   </select>
                 ) : (
                   <input
                     id={key} name={key} type={field.type} value={formData[key]} onChange={handleChange}
                     placeholder={field.placeholder} min={field.min} max={field.max} required
-                    className="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-600/50 rounded-xl text-white
-                      placeholder:text-slate-500 focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500
-                      transition-all duration-200 hover:border-slate-500"
+                    className="w-full px-4 py-3 glass-input rounded-xl text-sm placeholder:text-slate-500/70"
                   />
                 )}
               </div>
@@ -179,33 +175,33 @@ export default function RiskAssessmentForm() {
           </div>
 
           {/* ── Action Buttons ── */}
-          <div className="flex gap-3 mt-6">
+          <div className="flex gap-4 mt-8">
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 py-3 px-6 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500
-                text-white font-semibold rounded-xl shadow-lg shadow-teal-500/25
+              className="flex-1 py-3.5 px-6 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500
+                text-white font-bold tracking-wide rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.4)]
                 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300
-                transform hover:scale-[1.02] active:scale-[0.98]"
+                transform hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] active:scale-[0.98]"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>
+                  <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>
                   Analyzing...
                 </span>
               ) : 'Assess Credit Risk'}
             </button>
             <button
               type="button" onClick={handleReset}
-              className="px-6 py-3 bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 font-medium rounded-xl
-                border border-slate-600/50 transition-all duration-200"
+              className="px-6 py-3.5 bg-white/5 hover:bg-white/10 text-slate-300 font-semibold rounded-xl
+                border border-white/10 transition-all duration-200 hover:text-white"
             >
               Reset
             </button>
           </div>
 
           {error && (
-            <div className="mt-4 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm flex items-start gap-2">
+            <div className="mt-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm flex items-start gap-3 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
               <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
               </svg>
@@ -217,51 +213,56 @@ export default function RiskAssessmentForm() {
         {/* ── Result Card (right panel) ── */}
         <div className="lg:col-span-2">
           {result ? (
-            <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 shadow-xl animate-fade-in">
+            <div className="glass-panel rounded-2xl p-6 sm:p-8 animate-fade-in relative z-10 h-full flex flex-col">
               {/* Risk Score Gauge */}
-              <div className="text-center mb-6">
-                <div className={`inline-flex items-center justify-center w-32 h-32 rounded-full ring-4 ${getRiskColor(result.risk_score).ring} bg-slate-900/80 mb-3`}>
+              <div className="text-center mb-8">
+                <div className={`inline-flex items-center justify-center w-36 h-36 rounded-full ring-4 ${getRiskColor(result.risk_score).ring} bg-slate-950/80 mb-4 shadow-[0_0_30px_rgba(0,0,0,0.5)]`}>
                   <div>
-                    <span className={`text-4xl font-black ${getRiskColor(result.risk_score).text}`}>
+                    <span className={`text-5xl font-black bg-clip-text text-transparent bg-gradient-to-b from-white ${
+                      result.risk_score <= 30 ? 'to-emerald-500' : result.risk_score <= 60 ? 'to-amber-500' : 'to-red-500'
+                    }`}>
                       {result.risk_score}
                     </span>
-                    <p className="text-xs text-slate-400 mt-0.5">/100</p>
+                    <p className="text-xs text-slate-500 font-bold tracking-widest mt-1">/ 100</p>
                   </div>
                 </div>
-                <div className={`inline-block px-4 py-1.5 rounded-full text-sm font-bold ${
+                <div className={`inline-block px-5 py-2 rounded-full text-sm font-bold tracking-wide shadow-lg ${
                   result.risk_classification === 'good'
-                    ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
-                    : 'bg-red-500/15 text-red-400 border border-red-500/30'
+                    ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shadow-emerald-500/20'
+                    : 'bg-red-500/15 text-red-400 border border-red-500/30 shadow-red-500/20'
                 }`}>
-                  {result.risk_classification === 'good' ? '✓ Good Credit' : '✗ Bad Credit'}
+                  {result.risk_classification === 'good' ? '✓ APPROVED: LOW RISK' : '✗ REJECTED: HIGH RISK'}
                 </div>
-                <p className="text-xs text-slate-500 mt-2">
+                <p className="text-xs text-slate-400 mt-3 font-medium">
                   {getRiskColor(result.risk_score).label} · {(result.risk_probability * 100).toFixed(1)}% default probability
                 </p>
               </div>
 
               {/* Metrics Row */}
-              <div className="grid grid-cols-2 gap-3 mb-5">
-                <div className="bg-slate-900/60 rounded-xl p-3 text-center">
-                  <p className="text-xs text-slate-400 mb-1">Default Prob.</p>
-                  <p className="text-lg font-bold text-white">{(result.risk_probability * 100).toFixed(1)}%</p>
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="bg-black/20 border border-white/5 rounded-xl p-4 text-center">
+                  <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-1">Default Prob.</p>
+                  <p className="text-xl font-bold text-white">{(result.risk_probability * 100).toFixed(1)}%</p>
                 </div>
-                <div className="bg-slate-900/60 rounded-xl p-3 text-center">
-                  <p className="text-xs text-slate-400 mb-1">Confidence</p>
-                  <p className="text-lg font-bold text-white">{(result.confidence * 100).toFixed(1)}%</p>
+                <div className="bg-black/20 border border-white/5 rounded-xl p-4 text-center">
+                  <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-1">AI Confidence</p>
+                  <p className="text-xl font-bold text-cyan-400">{(result.confidence * 100).toFixed(1)}%</p>
                 </div>
               </div>
 
               {/* Risk Factors */}
               {result.risk_factors?.length > 0 && (
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-300 mb-3">Risk Factors</h4>
-                  <div className="space-y-2 max-h-52 overflow-y-auto pr-1">
+                <div className="flex-1">
+                  <h4 className="text-sm font-bold text-slate-300 mb-4 uppercase tracking-wider flex items-center gap-2">
+                    <svg className="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Risk Factors
+                  </h4>
+                  <div className="space-y-2.5 max-h-[250px] overflow-y-auto pr-2 custom-scrollbar">
                     {result.risk_factors.map((factor, i) => (
-                      <div key={i} className={`flex items-start gap-2.5 p-2.5 rounded-lg text-xs ${
+                      <div key={i} className={`flex items-start gap-3 p-3 rounded-xl border ${
                         factor.impact === 'positive'
-                          ? 'bg-emerald-500/8 border border-emerald-500/20'
-                          : 'bg-red-500/8 border border-red-500/20'
+                          ? 'bg-emerald-500/5 border-emerald-500/20'
+                          : 'bg-red-500/5 border-red-500/20'
                       }`}>
                         <span className={`mt-0.5 flex-shrink-0 text-sm ${
                           factor.impact === 'positive' ? 'text-emerald-400' : 'text-red-400'
@@ -269,10 +270,10 @@ export default function RiskAssessmentForm() {
                           {factor.impact === 'positive' ? '▲' : '▼'}
                         </span>
                         <div>
-                          <p className={`font-semibold ${
-                            factor.impact === 'positive' ? 'text-emerald-300' : 'text-red-300'
+                          <p className={`text-sm font-bold ${
+                            factor.impact === 'positive' ? 'text-emerald-400' : 'text-red-400'
                           }`}>{factor.factor}</p>
-                          <p className="text-slate-400 mt-0.5">{factor.detail}</p>
+                          <p className="text-slate-400 text-xs mt-1 leading-relaxed">{factor.detail}</p>
                         </div>
                       </div>
                     ))}
@@ -281,15 +282,15 @@ export default function RiskAssessmentForm() {
               )}
             </div>
           ) : (
-            <div className="bg-slate-800/30 border border-dashed border-slate-700/50 rounded-2xl p-10 flex flex-col items-center justify-center text-center min-h-[300px]">
-              <div className="w-16 h-16 rounded-2xl bg-slate-800/80 flex items-center justify-center mb-4">
-                <svg className="w-8 h-8 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="glass-panel border-dashed border-white/20 rounded-2xl p-10 flex flex-col items-center justify-center text-center h-full min-h-[400px]">
+              <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-6 border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                <svg className="w-10 h-10 text-cyan-500/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                     d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <p className="text-slate-400 text-sm font-medium">Risk Score Preview</p>
-              <p className="text-slate-500 text-xs mt-1">Fill in the form and submit to see results</p>
+              <p className="text-white text-lg font-heading font-semibold">Ready for Analysis</p>
+              <p className="text-slate-400 text-sm mt-2 max-w-xs leading-relaxed">Fill out the applicant details on the left and submit to generate an AI risk prediction.</p>
             </div>
           )}
         </div>

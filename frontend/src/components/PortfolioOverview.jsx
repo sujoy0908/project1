@@ -70,26 +70,26 @@ export default function PortfolioOverview() {
       </div>
 
       {/* ── KPI Cards ── */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
         <KpiCard
           label="Total Applicants"
           value={portfolio.total_applicants.toLocaleString()}
           icon="👥"
-          color="from-blue-500/10 to-indigo-500/10"
+          color="bg-blue-500/10"
           borderColor="border-blue-500/20"
         />
         <KpiCard
           label="Avg. Credit Amount"
           value={`DM ${Math.round(portfolio.avg_credit_amount).toLocaleString()}`}
           icon="💰"
-          color="from-amber-500/10 to-yellow-500/10"
+          color="bg-amber-500/10"
           borderColor="border-amber-500/20"
         />
         <KpiCard
           label="Good Credit Rate"
           value={`${portfolio.good_risk_pct}%`}
           icon="✓"
-          color="from-emerald-500/10 to-green-500/10"
+          color="bg-emerald-500/10"
           borderColor="border-emerald-500/20"
           valueColor="text-emerald-400"
         />
@@ -97,7 +97,7 @@ export default function PortfolioOverview() {
           label="Default Rate"
           value={`${portfolio.bad_risk_pct}%`}
           icon="⚠"
-          color="from-red-500/10 to-rose-500/10"
+          color="bg-red-500/10"
           borderColor="border-red-500/20"
           valueColor="text-red-400"
         />
@@ -106,8 +106,8 @@ export default function PortfolioOverview() {
       {/* ── Charts Row ── */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Risk Distribution Donut */}
-        <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-5 shadow-xl">
-          <h3 className="text-sm font-semibold text-slate-300 mb-4">Risk Distribution</h3>
+        <div className="glass-panel rounded-2xl p-6 shadow-xl glass-panel-hover">
+          <h3 className="text-sm font-bold text-slate-300 mb-4 uppercase tracking-wider">Risk Distribution</h3>
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>
               <Pie
@@ -122,16 +122,17 @@ export default function PortfolioOverview() {
               </Pie>
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#1e293b', border: '1px solid #334155',
-                  borderRadius: '12px', color: '#e2e8f0', fontSize: '13px'
+                  backgroundColor: 'rgba(15, 23, 42, 0.8)', border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '12px', color: '#e2e8f0', fontSize: '13px', backdropFilter: 'blur(8px)'
                 }}
+                itemStyle={{ color: '#fff' }}
               />
             </PieChart>
           </ResponsiveContainer>
           <div className="flex justify-center gap-6 mt-2">
             {riskPieData.map((entry) => (
-              <div key={entry.name} className="flex items-center gap-2 text-xs text-slate-400">
-                <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: entry.color }} />
+              <div key={entry.name} className="flex items-center gap-2 text-xs font-semibold text-slate-300">
+                <span className="w-3 h-3 rounded-full shadow-sm" style={{ backgroundColor: entry.color, boxShadow: `0 0 8px ${entry.color}80` }} />
                 {entry.name} ({entry.value})
               </div>
             ))}
@@ -139,39 +140,41 @@ export default function PortfolioOverview() {
         </div>
 
         {/* Age Distribution */}
-        <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-5 shadow-xl">
-          <h3 className="text-sm font-semibold text-slate-300 mb-4">Age Distribution</h3>
+        <div className="glass-panel rounded-2xl p-6 shadow-xl glass-panel-hover">
+          <h3 className="text-sm font-bold text-slate-300 mb-4 uppercase tracking-wider">Age Distribution</h3>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={ageData} barSize={28}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-              <XAxis dataKey="range" tick={{ fill: '#94a3b8', fontSize: 11 }} />
-              <YAxis tick={{ fill: '#94a3b8', fontSize: 11 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+              <XAxis dataKey="range" tick={{ fill: '#94a3b8', fontSize: 11 }} axisLine={false} tickLine={false} dy={10} />
+              <YAxis tick={{ fill: '#94a3b8', fontSize: 11 }} axisLine={false} tickLine={false} dx={-10} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#1e293b', border: '1px solid #334155',
-                  borderRadius: '12px', color: '#e2e8f0', fontSize: '13px'
+                  backgroundColor: 'rgba(15, 23, 42, 0.8)', border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '12px', color: '#e2e8f0', fontSize: '13px', backdropFilter: 'blur(8px)'
                 }}
+                cursor={{ fill: 'rgba(255,255,255,0.05)' }}
               />
-              <Bar dataKey="count" fill="#6366f1" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="count" fill="#3b82f6" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         {/* Purpose Distribution */}
-        <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-5 shadow-xl">
-          <h3 className="text-sm font-semibold text-slate-300 mb-4">Loan Purpose Breakdown</h3>
+        <div className="glass-panel rounded-2xl p-6 shadow-xl glass-panel-hover">
+          <h3 className="text-sm font-bold text-slate-300 mb-4 uppercase tracking-wider">Loan Purpose</h3>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={purposeData} layout="vertical" barSize={16}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" horizontal={false} />
-              <XAxis type="number" tick={{ fill: '#94a3b8', fontSize: 11 }} />
-              <YAxis dataKey="purpose" type="category" width={100} tick={{ fill: '#94a3b8', fontSize: 10 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+              <XAxis type="number" tick={{ fill: '#94a3b8', fontSize: 11 }} axisLine={false} tickLine={false} />
+              <YAxis dataKey="purpose" type="category" width={100} tick={{ fill: '#94a3b8', fontSize: 10 }} axisLine={false} tickLine={false} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#1e293b', border: '1px solid #334155',
-                  borderRadius: '12px', color: '#e2e8f0', fontSize: '13px'
+                  backgroundColor: 'rgba(15, 23, 42, 0.8)', border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '12px', color: '#e2e8f0', fontSize: '13px', backdropFilter: 'blur(8px)'
                 }}
+                cursor={{ fill: 'rgba(255,255,255,0.05)' }}
               />
-              <Bar dataKey="count" fill="#14b8a6" radius={[0, 6, 6, 0]} />
+              <Bar dataKey="count" fill="#06b6d4" radius={[0, 6, 6, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -185,13 +188,16 @@ export default function PortfolioOverview() {
 
 function KpiCard({ label, value, icon, color, borderColor, valueColor = 'text-white' }) {
   return (
-    <div className={`bg-gradient-to-br ${color} border ${borderColor} rounded-2xl p-4 shadow-lg
-      transition-transform duration-200 hover:scale-[1.02]`}>
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-lg">{icon}</span>
+    <div className={`glass-panel border ${borderColor} rounded-2xl p-5 shadow-lg
+      transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative overflow-hidden group`}>
+      <div className={`absolute inset-0 ${color} opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-xl">{icon}</span>
+        </div>
+        <p className={`text-2xl font-black ${valueColor} tracking-tight`}>{value}</p>
+        <p className="text-xs text-slate-400 mt-1.5 font-medium">{label}</p>
       </div>
-      <p className={`text-2xl font-bold ${valueColor}`}>{value}</p>
-      <p className="text-xs text-slate-400 mt-1">{label}</p>
     </div>
   );
 }
@@ -199,15 +205,15 @@ function KpiCard({ label, value, icon, color, borderColor, valueColor = 'text-wh
 function LoadingSkeleton() {
   return (
     <div className="space-y-6">
-      <div className="h-8 w-48 bg-slate-800/60 rounded-lg animate-pulse" />
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="h-8 w-48 glass-panel rounded-lg animate-pulse border-none" />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
         {[...Array(4)].map((_, i) => (
-          <div key={i} className="h-24 bg-slate-800/40 rounded-2xl animate-pulse" />
+          <div key={i} className="h-28 glass-panel rounded-2xl animate-pulse border-none" />
         ))}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[...Array(3)].map((_, i) => (
-          <div key={i} className="h-72 bg-slate-800/40 rounded-2xl animate-pulse" />
+          <div key={i} className="h-72 glass-panel rounded-2xl animate-pulse border-none" />
         ))}
       </div>
     </div>

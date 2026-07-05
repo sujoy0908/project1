@@ -82,31 +82,33 @@ export default function FeatureImportance() {
         </div>
       </div>
 
-      {/* Chart */}
-      <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 shadow-xl">
+      <div className="glass-panel rounded-2xl p-6 shadow-xl glass-panel-hover">
         <ResponsiveContainer width="100%" height={400}>
           <BarChart data={chartData} layout="vertical" margin={{ left: 20, right: 20, top: 5, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#334155" horizontal={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
             <XAxis
               type="number"
               tick={{ fill: '#94a3b8', fontSize: 11 }}
               domain={[0, maxImportance * 1.1]}
               tickFormatter={(v) => v.toFixed(2)}
+              axisLine={false} tickLine={false}
             />
             <YAxis
               dataKey="feature"
               type="category"
               width={180}
               tick={{ fill: '#cbd5e1', fontSize: 11 }}
+              axisLine={false} tickLine={false}
             />
             <Tooltip
-              cursor={{ fill: 'rgba(148, 163, 184, 0.08)' }}
+              cursor={{ fill: 'rgba(255, 255, 255, 0.03)' }}
               contentStyle={{
-                backgroundColor: '#1e293b',
-                border: '1px solid #334155',
+                backgroundColor: 'rgba(15, 23, 42, 0.8)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
                 color: '#e2e8f0',
-                fontSize: '13px'
+                fontSize: '13px',
+                backdropFilter: 'blur(8px)'
               }}
               formatter={(value, name, props) => [
                 `${value.toFixed(4)}`,
@@ -122,17 +124,17 @@ export default function FeatureImportance() {
             </Bar>
             <defs>
               <linearGradient id="importanceGradient" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#0d9488" />
-                <stop offset="100%" stopColor="#06b6d4" />
+                <stop offset="0%" stopColor="#06b6d4" />
+                <stop offset="100%" stopColor="#3b82f6" />
               </linearGradient>
             </defs>
           </BarChart>
         </ResponsiveContainer>
 
         {/* Insight callout */}
-        <div className="mt-4 p-3 bg-slate-900/40 rounded-xl border border-slate-700/30">
-          <p className="text-xs text-slate-400">
-            <span className="text-teal-400 font-semibold">Insight: </span>
+        <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.02)]">
+          <p className="text-sm text-slate-400 leading-relaxed">
+            <span className="text-cyan-400 font-bold uppercase tracking-wider text-xs mr-2">Insight:</span>
             {activeModel === 'random_forest'
               ? 'Random Forest feature importance is computed from mean decrease in impurity (Gini importance) across all trees.'
               : 'Logistic Regression importance is derived from normalized absolute coefficient values.'
