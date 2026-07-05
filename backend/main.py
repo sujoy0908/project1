@@ -74,7 +74,7 @@ try:
     importance_data = load_artifact('feature_importance.json')
     portfolio_data = load_artifact('portfolio_summary.json')
     feature_names = load_artifact('feature_names.json')
-    print("✓ All model artifacts loaded successfully")
+    print("All model artifacts loaded successfully")
 except FileNotFoundError as e:
     print(f"⚠ Warning: {e}")
     print("  Run model_training.py first to generate model artifacts.")
@@ -152,6 +152,8 @@ class PredictionResponse(BaseModel):
     risk_classification: str
     risk_probability: float
     risk_score: int
+    risk_tier: str
+    approval_status: str
     confidence: float
     risk_factors: list
     input_summary: dict
@@ -201,6 +203,15 @@ async def predict_risk(applicant: ApplicantInput):
     classification = 'bad' if prediction == 1 else 'good'
     confidence = float(max(probabilities))
     
+    if risk_prob < 0.20:
+        risk_tier = "Low Risk"
+    elif risk_prob < 0.50:
+        risk_tier = "Medium Risk"
+    else:
+        risk_tier = "High Risk"
+
+    approval_status = "APPROVED" if risk_prob < 0.50 else "REJECTED"
+    
     # Identify top risk factors based on feature importance and input values
     risk_factors = _identify_risk_factors(input_data, risk_prob)
     
@@ -208,6 +219,8 @@ async def predict_risk(applicant: ApplicantInput):
         risk_classification=classification,
         risk_probability=round(risk_prob, 4),
         risk_score=risk_score,
+        risk_tier=risk_tier,
+        approval_status=approval_status,
         confidence=round(confidence, 4),
         risk_factors=risk_factors,
         input_summary={

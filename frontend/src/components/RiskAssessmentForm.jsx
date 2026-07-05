@@ -123,9 +123,9 @@ export default function RiskAssessmentForm() {
 
   /* ── Risk score color logic ── */
   const getRiskColor = (score) => {
-    if (score <= 30) return { bg: 'bg-emerald-500', text: 'text-emerald-400', ring: 'ring-emerald-500/30', label: 'Low Risk' };
-    if (score <= 60) return { bg: 'bg-amber-500', text: 'text-amber-400', ring: 'ring-amber-500/30', label: 'Medium Risk' };
-    return { bg: 'bg-red-500', text: 'text-red-400', ring: 'ring-red-500/30', label: 'High Risk' };
+    if (score <= 20) return { bg: 'bg-emerald-500', text: 'text-emerald-400', ring: 'ring-emerald-500/30' };
+    if (score < 50) return { bg: 'bg-amber-500', text: 'text-amber-400', ring: 'ring-amber-500/30' };
+    return { bg: 'bg-red-500', text: 'text-red-400', ring: 'ring-red-500/30' };
   };
 
   return (
@@ -227,14 +227,14 @@ export default function RiskAssessmentForm() {
                   </div>
                 </div>
                 <div className={`inline-block px-5 py-2 rounded-full text-sm font-bold tracking-wide shadow-lg ${
-                  result.risk_classification === 'good'
+                  result.approval_status === 'APPROVED'
                     ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shadow-emerald-500/20'
                     : 'bg-red-500/15 text-red-400 border border-red-500/30 shadow-red-500/20'
                 }`}>
-                  {result.risk_classification === 'good' ? '✓ APPROVED: LOW RISK' : '✗ REJECTED: HIGH RISK'}
+                  {result.approval_status === 'APPROVED' ? '✓ APPROVED' : '✗ REJECTED'}
                 </div>
                 <p className="text-xs text-slate-400 mt-3 font-medium">
-                  {getRiskColor(result.risk_score).label} · {(result.risk_probability * 100).toFixed(1)}% default probability
+                  {result.risk_tier} · {(result.risk_probability * 100).toFixed(1)}% default probability
                 </p>
               </div>
 
