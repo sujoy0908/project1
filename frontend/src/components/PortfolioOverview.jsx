@@ -216,9 +216,9 @@ function LoadingSkeleton() {
 
 function ErrorState({ message }) {
   return (
-    <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-6 text-center">
-      <p className="text-red-400 font-medium">{message}</p>
-      <p className="text-red-400/60 text-sm mt-1">Make sure the backend is running on port 8000</p>
+    <div className="bg-red-900/20 border border-red-800/30 rounded-lg p-6 text-center shadow-lg">
+      <p className="text-red-400 font-medium">Failed to load portfolio data</p>
+      <p className="text-red-400/60 text-sm mt-1">Make sure the backend API is reachable</p>
     </div>
   );
 }

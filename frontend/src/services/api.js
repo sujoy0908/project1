@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+console.log('Using API Base URL:', API_BASE_URL);
 
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 15000,
+  timeout: 60000, // Increased to 60s for Render free tier cold starts
   headers: {
     'Content-Type': 'application/json',
   },

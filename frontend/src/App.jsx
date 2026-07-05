@@ -113,8 +113,7 @@ export default function App() {
             <div>
               <p className="text-amber-300 font-semibold text-sm">Backend API is unreachable</p>
               <p className="text-amber-400/70 text-xs mt-1">
-                Make sure the FastAPI server is running on <code className="bg-slate-800 px-1.5 py-0.5 rounded text-xs">http://localhost:8000</code>.
-                Run <code className="bg-slate-800 px-1.5 py-0.5 rounded text-xs">python main.py</code> from the backend directory.
+                The backend API could not be reached. Ensure your server is running and configured correctly.
               </p>
             </div>
           </div>
