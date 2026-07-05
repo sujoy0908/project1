@@ -70,7 +70,7 @@ export default function PortfolioOverview() {
       </div>
 
       {/* ── KPI Cards ── */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
         <KpiCard
           label="Total Applicants"
           value={portfolio.total_applicants.toLocaleString()}
@@ -104,7 +104,7 @@ export default function PortfolioOverview() {
       </div>
 
       {/* ── Charts Row ── */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-10">
         {/* Risk Distribution Donut */}
         <div className="glass-panel rounded-2xl p-6 shadow-xl glass-panel-hover">
           <h3 className="text-sm font-bold text-slate-300 mb-4 uppercase tracking-wider">Risk Distribution</h3>
@@ -188,15 +188,15 @@ export default function PortfolioOverview() {
 
 function KpiCard({ label, value, icon, color, borderColor, valueColor = 'text-white' }) {
   return (
-    <div className={`glass-panel border ${borderColor} rounded-2xl p-5 shadow-lg
+    <div className={`glass-panel border ${borderColor} rounded-3xl p-6 sm:p-8 shadow-lg
       transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative overflow-hidden group`}>
       <div className={`absolute inset-0 ${color} opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
       <div className="relative z-10">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-xl">{icon}</span>
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-2xl">{icon}</span>
         </div>
-        <p className={`text-2xl font-black ${valueColor} tracking-tight`}>{value}</p>
-        <p className="text-xs text-slate-400 mt-1.5 font-medium">{label}</p>
+        <p className={`text-3xl font-black ${valueColor} tracking-tight`}>{value}</p>
+        <p className="text-sm text-slate-400 mt-2 font-medium">{label}</p>
       </div>
     </div>
   );

@@ -46,7 +46,7 @@ export default function ModelMetrics() {
       </div>
 
       {/* ── Metrics Cards Grid ── */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
         <MetricCard label="Accuracy" primary={primary.accuracy} baseline={baseline.accuracy} icon="🎯" />
         <MetricCard label="Precision" primary={primary.precision} baseline={baseline.precision} icon="✦" />
         <MetricCard label="Recall" primary={primary.recall} baseline={baseline.recall} icon="◎" />
@@ -55,7 +55,7 @@ export default function ModelMetrics() {
       </div>
 
       {/* ── Confusion Matrices ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
         <ConfusionMatrixCard
           title={primary.model_name}
           matrix={primary.confusion_matrix}

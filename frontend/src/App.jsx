@@ -46,8 +46,8 @@ export default function App() {
       {/*  HEADER / NAVIGATION                       */}
       {/* ═══════════════════════════════════════════ */}
       <header className="sticky top-0 z-50 glass-panel border-b-0 border-b-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16">
+        <div className="w-full max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-16">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.5)]">
@@ -106,13 +106,13 @@ export default function App() {
       {/* ═══════════════════════════════════════════ */}
       {/*  MAIN CONTENT                               */}
       {/* ═══════════════════════════════════════════ */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 space-y-16 animate-fade-in">
+      <main className="relative z-10 w-full max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-16 py-12 space-y-24 animate-fade-in">
         {apiStatus === 'disconnected' && (
-          <div className="glass-panel border-red-500/30 rounded-2xl p-5 flex items-start gap-4">
-            <span className="text-2xl animate-bounce">⚠️</span>
+          <div className="glass-panel border-red-500/30 rounded-2xl p-6 flex items-start gap-4">
+            <span className="text-3xl animate-bounce">⚠️</span>
             <div>
-              <p className="text-red-400 font-heading font-semibold text-lg">Backend API is unreachable</p>
-              <p className="text-red-400/70 text-sm mt-1">
+              <p className="text-red-400 font-heading font-semibold text-xl">Backend API is unreachable</p>
+              <p className="text-red-400/70 text-base mt-2">
                 The backend API could not be reached. Ensure your server is running and configured correctly.
               </p>
             </div>

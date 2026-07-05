@@ -144,12 +144,12 @@ export default function RiskAssessmentForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-5 gap-10">
         {/* ── Form (left panel) ── */}
-        <form onSubmit={handleSubmit} className="lg:col-span-3 glass-panel rounded-2xl p-6 sm:p-8 animate-fade-in relative z-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <form onSubmit={handleSubmit} className="xl:col-span-3 glass-panel rounded-3xl p-8 sm:p-10 animate-fade-in relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {Object.entries(FORM_FIELDS).map(([key, field]) => (
-              <div key={key} className="space-y-2">
+              <div key={key} className="space-y-3">
                 <label htmlFor={key} className="block text-[13px] font-semibold text-slate-300 tracking-wide">
                   {field.label}
                 </label>
@@ -211,11 +211,11 @@ export default function RiskAssessmentForm() {
         </form>
 
         {/* ── Result Card (right panel) ── */}
-        <div className="lg:col-span-2">
+        <div className="xl:col-span-2">
           {result ? (
-            <div className="glass-panel rounded-2xl p-6 sm:p-8 animate-fade-in relative z-10 h-full flex flex-col">
+            <div className="glass-panel rounded-3xl p-8 sm:p-10 animate-fade-in relative z-10 h-full flex flex-col">
               {/* Risk Score Gauge */}
-              <div className="text-center mb-8">
+              <div className="text-center mb-10">
                 <div className={`inline-flex items-center justify-center w-36 h-36 rounded-full ring-4 ${getRiskColor(result.risk_score).ring} bg-slate-950/80 mb-4 shadow-[0_0_30px_rgba(0,0,0,0.5)]`}>
                   <div>
                     <span className={`text-5xl font-black bg-clip-text text-transparent bg-gradient-to-b from-white ${
