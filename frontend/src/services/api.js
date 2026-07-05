@@ -17,24 +17,6 @@ export const predictRisk = async (applicantData) => {
   return response.data;
 };
 
-// ── Model Metrics ───────────────────────────────────────
-export const getModelMetrics = async () => {
-  const response = await api.get('/model-metrics');
-  return response.data;
-};
-
-// ── Feature Importance ──────────────────────────────────
-export const getFeatureImportance = async () => {
-  const response = await api.get('/feature-importance');
-  return response.data;
-};
-
-// ── Portfolio Summary ───────────────────────────────────
-export const getPortfolioSummary = async () => {
-  const response = await api.get('/portfolio-summary');
-  return response.data;
-};
-
 // ── Health Check ────────────────────────────────────────
 export const healthCheck = async () => {
   const response = await api.get('/health');
