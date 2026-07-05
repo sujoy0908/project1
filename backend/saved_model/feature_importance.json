@@ -1,0 +1,296 @@
+{
+  "random_forest": [
+    {
+      "feature": "Age",
+      "importance": 0.2013,
+      "raw_feature": "age"
+    },
+    {
+      "feature": "Credit Amount",
+      "importance": 0.1996,
+      "raw_feature": "credit_amount"
+    },
+    {
+      "feature": "Duration",
+      "importance": 0.1243,
+      "raw_feature": "duration"
+    },
+    {
+      "feature": "Housing Own",
+      "importance": 0.0448,
+      "raw_feature": "housing_own"
+    },
+    {
+      "feature": "Checking Account Little",
+      "importance": 0.0308,
+      "raw_feature": "checking_account_little"
+    },
+    {
+      "feature": "Saving Accounts Little",
+      "importance": 0.0289,
+      "raw_feature": "saving_accounts_little"
+    },
+    {
+      "feature": "Sex Female",
+      "importance": 0.0253,
+      "raw_feature": "sex_female"
+    },
+    {
+      "feature": "Sex Male",
+      "importance": 0.0244,
+      "raw_feature": "sex_male"
+    },
+    {
+      "feature": "Purpose Car",
+      "importance": 0.0241,
+      "raw_feature": "purpose_car"
+    },
+    {
+      "feature": "Checking Account Unknown",
+      "importance": 0.024,
+      "raw_feature": "checking_account_unknown"
+    },
+    {
+      "feature": "Housing Rent",
+      "importance": 0.0237,
+      "raw_feature": "housing_rent"
+    },
+    {
+      "feature": "Checking Account Moderate",
+      "importance": 0.0232,
+      "raw_feature": "checking_account_moderate"
+    },
+    {
+      "feature": "Job 2",
+      "importance": 0.0223,
+      "raw_feature": "job_2"
+    },
+    {
+      "feature": "Job 3",
+      "importance": 0.021,
+      "raw_feature": "job_3"
+    },
+    {
+      "feature": "Purpose Radio/Tv",
+      "importance": 0.0208,
+      "raw_feature": "purpose_radio/TV"
+    },
+    {
+      "feature": "Purpose Furniture/Equipment",
+      "importance": 0.0181,
+      "raw_feature": "purpose_furniture/equipment"
+    },
+    {
+      "feature": "Purpose Business",
+      "importance": 0.018,
+      "raw_feature": "purpose_business"
+    },
+    {
+      "feature": "Job 1",
+      "importance": 0.0175,
+      "raw_feature": "job_1"
+    },
+    {
+      "feature": "Saving Accounts Unknown",
+      "importance": 0.0167,
+      "raw_feature": "saving_accounts_unknown"
+    },
+    {
+      "feature": "Saving Accounts Rich",
+      "importance": 0.0164,
+      "raw_feature": "saving_accounts_rich"
+    },
+    {
+      "feature": "Checking Account Rich",
+      "importance": 0.0135,
+      "raw_feature": "checking_account_rich"
+    },
+    {
+      "feature": "Job 0",
+      "importance": 0.0131,
+      "raw_feature": "job_0"
+    },
+    {
+      "feature": "Saving Accounts Moderate",
+      "importance": 0.0115,
+      "raw_feature": "saving_accounts_moderate"
+    },
+    {
+      "feature": "Housing Free",
+      "importance": 0.0113,
+      "raw_feature": "housing_free"
+    },
+    {
+      "feature": "Saving Accounts Quite Rich",
+      "importance": 0.011,
+      "raw_feature": "saving_accounts_quite rich"
+    },
+    {
+      "feature": "Purpose Education",
+      "importance": 0.0108,
+      "raw_feature": "purpose_education"
+    },
+    {
+      "feature": "Purpose Repairs",
+      "importance": 0.0017,
+      "raw_feature": "purpose_repairs"
+    },
+    {
+      "feature": "Purpose Domestic Appliances",
+      "importance": 0.0016,
+      "raw_feature": "purpose_domestic appliances"
+    },
+    {
+      "feature": "Purpose Vacation/Others",
+      "importance": 0.0003,
+      "raw_feature": "purpose_vacation/others"
+    }
+  ],
+  "logistic_regression": [
+    {
+      "feature": "Saving Accounts Rich",
+      "importance": 0.1109,
+      "raw_feature": "saving_accounts_rich"
+    },
+    {
+      "feature": "Job 0",
+      "importance": 0.076,
+      "raw_feature": "job_0"
+    },
+    {
+      "feature": "Job 3",
+      "importance": 0.0662,
+      "raw_feature": "job_3"
+    },
+    {
+      "feature": "Purpose Domestic Appliances",
+      "importance": 0.0648,
+      "raw_feature": "purpose_domestic appliances"
+    },
+    {
+      "feature": "Purpose Business",
+      "importance": 0.0615,
+      "raw_feature": "purpose_business"
+    },
+    {
+      "feature": "Saving Accounts Little",
+      "importance": 0.0593,
+      "raw_feature": "saving_accounts_little"
+    },
+    {
+      "feature": "Housing Own",
+      "importance": 0.057,
+      "raw_feature": "housing_own"
+    },
+    {
+      "feature": "Age",
+      "importance": 0.0488,
+      "raw_feature": "age"
+    },
+    {
+      "feature": "Checking Account Rich",
+      "importance": 0.0456,
+      "raw_feature": "checking_account_rich"
+    },
+    {
+      "feature": "Saving Accounts Unknown",
+      "importance": 0.0445,
+      "raw_feature": "saving_accounts_unknown"
+    },
+    {
+      "feature": "Checking Account Little",
+      "importance": 0.0407,
+      "raw_feature": "checking_account_little"
+    },
+    {
+      "feature": "Duration",
+      "importance": 0.0382,
+      "raw_feature": "duration"
+    },
+    {
+      "feature": "Credit Amount",
+      "importance": 0.0372,
+      "raw_feature": "credit_amount"
+    },
+    {
+      "feature": "Sex Male",
+      "importance": 0.0327,
+      "raw_feature": "sex_male"
+    },
+    {
+      "feature": "Housing Rent",
+      "importance": 0.0287,
+      "raw_feature": "housing_rent"
+    },
+    {
+      "feature": "Saving Accounts Quite Rich",
+      "importance": 0.0284,
+      "raw_feature": "saving_accounts_quite rich"
+    },
+    {
+      "feature": "Saving Accounts Moderate",
+      "importance": 0.0264,
+      "raw_feature": "saving_accounts_moderate"
+    },
+    {
+      "feature": "Sex Female",
+      "importance": 0.0236,
+      "raw_feature": "sex_female"
+    },
+    {
+      "feature": "Checking Account Unknown",
+      "importance": 0.0197,
+      "raw_feature": "checking_account_unknown"
+    },
+    {
+      "feature": "Housing Free",
+      "importance": 0.0192,
+      "raw_feature": "housing_free"
+    },
+    {
+      "feature": "Purpose Education",
+      "importance": 0.0176,
+      "raw_feature": "purpose_education"
+    },
+    {
+      "feature": "Checking Account Moderate",
+      "importance": 0.0155,
+      "raw_feature": "checking_account_moderate"
+    },
+    {
+      "feature": "Job 1",
+      "importance": 0.0138,
+      "raw_feature": "job_1"
+    },
+    {
+      "feature": "Purpose Vacation/Others",
+      "importance": 0.0079,
+      "raw_feature": "purpose_vacation/others"
+    },
+    {
+      "feature": "Purpose Car",
+      "importance": 0.0056,
+      "raw_feature": "purpose_car"
+    },
+    {
+      "feature": "Job 2",
+      "importance": 0.0052,
+      "raw_feature": "job_2"
+    },
+    {
+      "feature": "Purpose Radio/Tv",
+      "importance": 0.0029,
+      "raw_feature": "purpose_radio/TV"
+    },
+    {
+      "feature": "Purpose Furniture/Equipment",
+      "importance": 0.0019,
+      "raw_feature": "purpose_furniture/equipment"
+    },
+    {
+      "feature": "Purpose Repairs",
+      "importance": 0.0006,
+      "raw_feature": "purpose_repairs"
+    }
+  ]
+}

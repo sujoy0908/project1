@@ -1,0 +1,34 @@
+{
+  "total_applicants": 1000,
+  "risk_distribution": {
+    "good": 700,
+    "bad": 300
+  },
+  "good_risk_pct": 70.0,
+  "bad_risk_pct": 30.0,
+  "avg_credit_amount": 3253.58,
+  "median_credit_amount": 2328.0,
+  "avg_duration": 22.0,
+  "avg_age": 34.9,
+  "credit_amount_by_risk": {
+    "good": 2924.11,
+    "bad": 4022.37
+  },
+  "age_distribution": {
+    "18-25": 237,
+    "26-35": 357,
+    "36-45": 239,
+    "46-55": 92,
+    "56+": 75
+  },
+  "purpose_distribution": {
+    "car": 334,
+    "radio/TV": 269,
+    "furniture/equipment": 206,
+    "business": 80,
+    "education": 71,
+    "repairs": 22,
+    "domestic appliances": 11,
+    "vacation/others": 7
+  }
+}
