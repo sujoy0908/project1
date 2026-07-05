@@ -46,7 +46,7 @@ export default function ModelMetrics() {
       </div>
 
       {/* ── Metrics Cards Grid ── */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
         <MetricCard label="Accuracy" primary={primary.accuracy} baseline={baseline.accuracy} icon="🎯" />
         <MetricCard label="Precision" primary={primary.precision} baseline={baseline.precision} icon="✦" />
         <MetricCard label="Recall" primary={primary.recall} baseline={baseline.recall} icon="◎" />
@@ -113,9 +113,9 @@ function MetricCard({ label, primary, baseline, icon }) {
             {better ? '+' : ''}{(diff * 100).toFixed(1)}%
           </span>
         </div>
-        <p className="text-3xl font-black text-white tracking-tight">{(primary * 100).toFixed(1)}%</p>
-        <p className="text-xs text-slate-400 font-semibold mt-1.5 uppercase tracking-wider">{label}</p>
-        <div className="mt-3 flex items-center justify-between bg-black/20 px-3 py-1.5 rounded-lg border border-white/5">
+        <p className="text-2xl lg:text-3xl font-black text-white tracking-tight truncate">{(primary * 100).toFixed(1)}%</p>
+        <p className="text-[10px] lg:text-xs text-slate-400 font-semibold mt-1 lg:mt-1.5 uppercase tracking-wider truncate">{label}</p>
+        <div className="mt-2 lg:mt-3 flex flex-col sm:flex-row sm:items-center justify-between bg-black/20 px-2 lg:px-3 py-1.5 rounded-lg border border-white/5 gap-1">
           <span className="text-[10px] text-slate-500 font-medium">BASELINE</span>
           <span className="text-[11px] text-slate-300 font-bold">{(baseline * 100).toFixed(1)}%</span>
         </div>

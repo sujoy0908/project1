@@ -27,6 +27,7 @@ body {
   background-attachment: fixed;
   color: #e2e8f0;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Headings with modern typography */
